@@ -1,4 +1,29 @@
-<!-- Comment to allow starting shortcode -->
+Release Notes
+InfluxDB 3 Core configuration options
+InfluxDB 3 Core lets you customize your configuration by using influxdb3 command options or by setting environment variables.
+
+Configure your server
+Pass configuration options using either command options or environment variables. Command options take precedence over environment variables.
+
+Global vs serve-specific options
+Some options are global (specified before the command) while others are serve-specific (specified after serve):
+
+Global options: Apply to the influxdb3 CLI itself (for example, --num-io-threads)
+Serve options: Apply only to the serve command (for example, --node-id, --object-store, --verbose)
+Example command with global and serve-specific options
+influxdb3 --num-io-threads=4 serve \
+  --node-id node0 \
+  --object-store file \
+  --data-dir ~/.influxdb3 \
+  --verbose \
+  --log-filter info
+Example environment variables
+export INFLUXDB3_NODE_IDENTIFIER_PREFIX=my-node
+export INFLUXDB3_OBJECT_STORE=file
+export INFLUXDB3_DB_DIR=~/.influxdb3
+export LOG_FILTER=info
+
+influxdb3 serve!-- Comment to allow starting shortcode -->
 
 {{< product-name >}} lets you customize your configuration by using
 `influxdb3` command options or by setting environment variables.
